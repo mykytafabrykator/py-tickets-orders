@@ -64,7 +64,6 @@ class MovieViewSet(viewsets.ModelViewSet):
 
         if genres:
             genre_ids = genres.split(",")
-            print(genre_ids)
             queryset = queryset.filter(genres__id__in=genre_ids).distinct()
 
         if actors:
@@ -102,9 +101,9 @@ class MovieSessionViewSet(viewsets.ModelViewSet):
 
 
 class OrderPagination(PageNumberPagination):
-    page_size = 1
+    page_size = 3
     page_size_query_param = "page_size"
-    max_page_size = 1
+    max_page_size = 10
 
 
 class OrderViewSet(viewsets.ModelViewSet):
